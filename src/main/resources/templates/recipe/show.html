@@ -12,7 +12,7 @@
     <script th:href="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
+<!--/*@thymesVar id="recipe" type="com.springframework.spring5recipeapp.domain.Recipe"*/-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -80,14 +80,7 @@
                 </div>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-md-11 ">
-                                <h1 class="panel-title">Ingredients</h1>
-                            </div>
-                            <div class="col-md-1">
-                                <a class="btn btn-default" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" role="button">View</a>
-                            </div>
-                        </div>
+                        <h1 class="panel-title" >Ingredients</h1>
                     </div>
                     <div class="panel-body">
                         <div class="row">
