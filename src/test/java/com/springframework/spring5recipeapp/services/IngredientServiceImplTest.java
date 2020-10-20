@@ -1,11 +1,13 @@
 package com.springframework.spring5recipeapp.services;
 
 import com.springframework.spring5recipeapp.commands.IngredientCommand;
+import com.springframework.spring5recipeapp.converters.IngredientCommandToIngredient;
 import com.springframework.spring5recipeapp.converters.IngredientToIngredientCommand;
 import com.springframework.spring5recipeapp.converters.UnitOfMeasureToUnitOfMeasureCommand;
 import com.springframework.spring5recipeapp.domain.Ingredient;
 import com.springframework.spring5recipeapp.domain.Recipe;
 import com.springframework.spring5recipeapp.repositories.RecipeRepository;
+import com.springframework.spring5recipeapp.repositories.UnitOfMeasureRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -24,6 +26,12 @@ public class IngredientServiceImplTest {
         @Mock
         RecipeRepository recipeRepository;
 
+        @Mock
+        IngredientCommandToIngredient ingredientCommandToIngredient;
+
+        @Mock
+        UnitOfMeasureRepository unitOfMeasureRepository;
+
         IngredientService ingredientService;
 
         public IngredientServiceImplTest() {
@@ -33,7 +41,7 @@ public class IngredientServiceImplTest {
         @BeforeEach
         public void setUp() throws Exception {
             MockitoAnnotations.initMocks(this);
-            ingredientService = new IngredientServiceImpl(ingredientToIngredientCommand, recipeRepository);
+            ingredientService = new IngredientServiceImpl(ingredientToIngredientCommand, ingredientCommandToIngredient, recipeRepository, unitOfMeasureRepository);
         }
 
         @Test
