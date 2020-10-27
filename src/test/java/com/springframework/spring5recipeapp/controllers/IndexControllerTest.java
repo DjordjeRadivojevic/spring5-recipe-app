@@ -21,6 +21,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 class IndexControllerTest {
 
+    MockMvc mockMvc;
+
     @Mock
     RecipeService recipeService;
 
@@ -33,11 +35,11 @@ class IndexControllerTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
+        mockMvc = MockMvcBuilders.standaloneSetup(indexController).build();
     }
 
     @Test
     void testMockMVC() throws Exception {
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(indexController).build();
         mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(view().name("index"));
     }
 
